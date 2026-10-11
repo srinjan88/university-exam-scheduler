@@ -1,0 +1,44 @@
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Python caches and bytecode
+__pycache__/
+*/__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Local compiled binaries and object files
+c_engine/*.exe
+c_engine/*.o
+c_engine/scheduler
+*.o
+*.so
+
+# Version control and IDE files
+.git/
+.gitignore
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment variables & secrets
+.env
+.env.*
+*.key
+*.pem
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Documentation and test artifacts not needed for production image runtime
+# (kept in git, but excluded from production container to minimize image size)
+tests/__pycache__/
+

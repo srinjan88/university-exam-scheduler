@@ -1,0 +1,37 @@
+# Compiled C binaries & object files
+c_engine/*.exe
+c_engine/*.o
+c_engine/scheduler
+*.o
+*.so
+
+# Python virtual environments & packages
+.venv/
+venv/
+ENV/
+env/
+
+# Python cache & artifacts
+__pycache__/
+*/__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Secrets & environment variables
+.env
+.env.*
+*.key
+*.pem
+
+# IDE & Editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Operating System files
+.DS_Store
+Thumbs.db

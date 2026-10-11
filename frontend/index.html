@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>University Examination Scheduler | Graph Coloring</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header Section -->
+    <header class="header">
+      <div class="header-badge">DSA Mini Project</div>
+      <h1 class="header-title">University Examination Scheduler</h1>
+      <p class="header-subtitle">Greedy Graph Coloring Algorithm</p>
+      <p class="header-description">
+        Schedule university examinations into collision-free time slots. 
+        Subjects that share enrolled students conflict and are guaranteed different examination slots.
+      </p>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- Input Section Card -->
+      <section class="card input-card" aria-labelledby="input-heading">
+        <div class="card-header">
+          <h2 id="input-heading">1. Configuration & Subjects</h2>
+          <button type="button" id="btn-load-sample" class="btn btn-secondary btn-sm" title="Populate with a typical 5-subject conflict graph">
+            Load Sample Dataset
+          </button>
+        </div>
+
+        <div class="form-group">
+          <label for="num-subjects-input" class="form-label">
+            Number of Examination Subjects (1 – 20):
+          </label>
+          <div class="number-input-row">
+            <input 
+              type="number" 
+              id="num-subjects-input" 
+              min="1" 
+              max="20" 
+              value="5" 
+              class="form-control" 
+              aria-describedby="num-subjects-help"
+            >
+            <span id="num-subjects-help" class="form-hint">
+              Changes dynamically update the subject fields below.
+            </span>
+          </div>
+        </div>
+
+        <!-- Dynamic Subject Names Container -->
+        <div class="form-group">
+          <label class="form-label">Subject Names:</label>
+          <div id="subjects-container" class="subjects-grid">
+            <!-- Dynamically populated by JavaScript -->
+          </div>
+        </div>
+
+        <!-- Conflict Definition Interface -->
+        <div class="conflict-section">
+          <h3>2. Examination Conflicts</h3>
+          <p class="section-help">
+            Define pairs of examinations that cannot run simultaneously (e.g., student overlap).
+          </p>
+
+          <div class="conflict-creator-row">
+            <div class="select-col">
+              <label for="select-subject-a" class="select-label">Subject A:</label>
+              <select id="select-subject-a" class="form-control select-subject">
+                <!-- Dynamically populated -->
+              </select>
+            </div>
+
+            <div class="conflict-vs">conflicts with</div>
+
+            <div class="select-col">
+              <label for="select-subject-b" class="select-label">Subject B:</label>
+              <select id="select-subject-b" class="form-control select-subject">
+                <!-- Dynamically populated -->
+              </select>
+            </div>
+
+            <div class="btn-col">
+              <button type="button" id="btn-add-conflict" class="btn btn-primary">
+                + Add Conflict
+              </button>
+            </div>
+          </div>
+
+          <!-- Active Conflicts List -->
+          <div class="active-conflicts-wrapper">
+            <div class="conflicts-header">
+              <span class="conflicts-count" id="conflicts-count">Current Conflicts: 0</span>
+              <button type="button" id="btn-clear-conflicts" class="btn-text" style="display: none;">
+                Remove All Conflicts
+              </button>
+            </div>
+            <div id="conflicts-list" class="conflicts-list">
+              <div class="empty-state">No conflicts added yet. Examinations will share slots if conflict-free.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="actions-row">
+          <button type="button" id="btn-generate" class="btn btn-success btn-lg">
+            Generate Examination Timetable
+          </button>
+          <button type="button" id="btn-reset" class="btn btn-outline btn-lg">
+            Reset All
+          </button>
+        </div>
+
+        <!-- Live Status / Validation Message Box -->
+        <div id="status-box" class="status-box" style="display: none;" role="alert"></div>
+      </section>
+
+      <!-- Results Section Card -->
+      <section id="results-card" class="card results-card" style="display: none;" aria-labelledby="results-heading">
+        <div class="card-header">
+          <h2 id="results-heading">Generated Examination Timetable</h2>
+          <div class="slot-badge" id="total-slots-badge">Total Time Slots: 0</div>
+        </div>
+
+        <div class="results-layout">
+          <!-- Timetable Table View -->
+          <div class="results-table-pane">
+            <h3>Subject-Wise Timetable</h3>
+            <div class="table-responsive">
+              <table class="timetable-table" id="timetable-table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Subject Name</th>
+                    <th>Assigned Time Slot</th>
+                  </tr>
+                </thead>
+                <tbody id="timetable-tbody">
+                  <!-- Populated by JavaScript -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Slot-Wise Grouping View -->
+          <div class="results-group-pane">
+            <h3>Concurrent Exam Groups (By Slot)</h3>
+            <p class="section-help">
+              Subjects grouped within the same time slot can be conducted simultaneously without conflict.
+            </p>
+            <div id="slots-container" class="slots-container">
+              <!-- Populated by JavaScript -->
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+      <div class="footer-content">
+        <p><strong>Core DSA Engine:</strong> Standalone C11 Executable using <strong>Greedy Graph Coloring</strong></p>
+        <p><strong>Data Structure:</strong> Two-Dimensional Adjacency Matrix (<code>graph[20][20]</code>)</p>
+        <p class="footer-sub">University Mini Project &bull; Academic Viva Demonstration</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
